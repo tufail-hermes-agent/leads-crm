@@ -1,6 +1,22 @@
-# Full-Stack Starter Next.js
+# Full-Stack Starter — Next.js
 
-Agency starter kit based on [Kiranism/next-shadcn-dashboard-starter](https://github.com/Kiranism/next-shadcn-dashboard-starter), prepared for full-stack application development.
+The agency's production-ready **full-stack** starter based on [Kiranism/next-shadcn-dashboard-starter](https://github.com/Kiranism/next-shadcn-dashboard-starter).
+
+## ⚠️ When to use this template
+
+Use this starter **ONLY** for full-stack projects that need:
+
+- A database (PostgreSQL / Neon / Prisma)
+- Authentication and user accounts
+- Server-side business logic (API routes, server actions)
+- Dashboards, admin panels, CRMs, SaaS apps
+
+**Do NOT use this starter for pure frontend work.** For landing pages, marketing sites, or static websites (no database, no auth, no backend), start from a lightweight frontend-only scaffold instead. Forcing Prisma, PostgreSQL, and auth into a project that does not need them is a violation of agency engineering standards.
+
+| Project type | Template |
+|---|---|
+| Landing page / marketing site / static | Frontend-only scaffold (no Prisma, no DB, no auth) |
+| Dashboard / admin / CRM / SaaS / full-stack app | **This starter** |
 
 ## Included
 
@@ -63,6 +79,19 @@ bun run db:studio
 ```
 
 Never commit `.env`, `.env.local`, `DATABASE_URL`, or other credentials.
+
+## Agency workflow
+
+For every new full-stack customer project:
+
+1. Create a GitHub repository under the agency organization
+2. Create an isolated Neon project/database for the customer
+3. Clone this starter into the project workspace
+4. Configure `DATABASE_URL` and secrets as environment variables
+5. Implement requirements (Prisma models, server actions, UI)
+6. Run migrations, lint, typecheck, build
+7. Push to GitHub and deploy to Vercel
+8. Verify the deployment and return the URL
 
 ## Source
 
