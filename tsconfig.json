@@ -30,5 +30,16 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "plans"]
+  "exclude": [
+    "node_modules",
+    "plans",
+    "scripts",
+    "src/components/ui/table",
+    "src/components/ui/kanban.tsx",
+    "src/components/ui/sidebar.tsx",
+    "src/components/ui/infobar.tsx",
+    "src/components/ui/file-preview.tsx",
+    "src/components/ui/info-button.tsx",
+    "src/components/ui/notification-card.tsx"
+  ]
 }

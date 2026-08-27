@@ -6,16 +6,56 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Pipeline {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String   @default("blue")
+  icon        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  leads       Lead[]
 }
 
-model HealthCheck {
+model Lead {
+  id          String     @id @default(cuid())
+  pipelineId  String
+  pipeline    Pipeline   @relation(fields: [pipelineId], references: [id], onDelete: Cascade)
+  name        String
+  phone       String?
+  email       String?
+  address     String?
+  locality    String?
+  city        String?
+  pincode     String?
+  source      String?
+  sourceUrl   String?
+  status      String     @default("new")
+  notes       String?
+  customData  Json?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  activities  Activity[]
+
+  @@index([pipelineId, status])
+  @@index([pipelineId, locality])
+}
+
+model Activity {
   id        String   @id @default(cuid())
-  status    String   @default("ok")
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  type      String
+  content   String
+  createdAt DateTime @default(now())
+
+  @@index([leadId, createdAt])
+}
+
+model AdminSession {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  expiresAt DateTime
   createdAt DateTime @default(now())
 }
