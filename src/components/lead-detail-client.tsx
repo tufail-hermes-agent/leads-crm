@@ -119,19 +119,23 @@ export function LeadDetailClient({
   return (
     <div className='grid gap-6 lg:grid-cols-3'>
       <div className='space-y-6 lg:col-span-2'>
-        <div className='rounded-lg border border-zinc-800 bg-zinc-900/40 p-6'>
+        <div className='rounded-2xl border border-border bg-card p-6 shadow-sm'>
           <div className='flex items-start justify-between'>
             <div>
-              <div className='flex items-center gap-2 text-xs text-zinc-500'>
+              <div className='flex items-center gap-2 text-xs text-muted-foreground'>
                 <Building2 className='h-3 w-3' />
                 {pipelineName}
               </div>
-              <h1 className='mt-1 text-2xl font-semibold tracking-tight'>{lead.name}</h1>
+              <h1 className='mt-1 text-2xl font-semibold tracking-tight text-foreground'>
+                {lead.name}
+              </h1>
               <div className='mt-2 flex items-center gap-2'>
                 <Badge variant='outline' className={s.color}>
                   {s.label}
                 </Badge>
-                {lead.source && <span className='text-xs text-zinc-500'>via {lead.source}</span>}
+                {lead.source && (
+                  <span className='text-xs text-muted-foreground'>via {lead.source}</span>
+                )}
               </div>
             </div>
             <Button variant='destructive' size='sm' onClick={del}>
@@ -227,7 +231,7 @@ export function LeadDetailClient({
               />
             </div>
             {saving && (
-              <div className='col-span-2 flex items-center gap-2 text-xs text-zinc-500'>
+              <div className='col-span-2 flex items-center gap-2 text-xs text-muted-foreground'>
                 <Loader2 className='h-3 w-3 animate-spin' /> Saving…
               </div>
             )}
@@ -244,7 +248,7 @@ export function LeadDetailClient({
             {lead.phone && (
               <a
                 href={`tel:${lead.phone}`}
-                className='flex items-center gap-2 text-zinc-300 hover:text-zinc-100'
+                className='flex items-center gap-2 text-foreground hover:text-primary'
               >
                 <Phone className='h-4 w-4' /> {lead.phone}
               </a>
@@ -252,13 +256,13 @@ export function LeadDetailClient({
             {lead.email && (
               <a
                 href={`mailto:${lead.email}`}
-                className='flex items-center gap-2 text-zinc-300 hover:text-zinc-100'
+                className='flex items-center gap-2 text-foreground hover:text-primary'
               >
                 <Mail className='h-4 w-4' /> {lead.email}
               </a>
             )}
             {lead.address && (
-              <p className='flex items-start gap-2 text-zinc-400'>
+              <p className='flex items-start gap-2 text-muted-foreground'>
                 <MapPin className='mt-0.5 h-4 w-4 shrink-0' />
                 <span>
                   {lead.address}
@@ -268,7 +272,7 @@ export function LeadDetailClient({
                 </span>
               </p>
             )}
-            <p className='text-xs text-zinc-500'>
+            <p className='text-xs text-muted-foreground'>
               Created {new Date(lead.createdAt).toLocaleString()}
             </p>
           </CardContent>
@@ -290,16 +294,18 @@ export function LeadDetailClient({
             <Button onClick={addActivity} disabled={!newNote.trim()} size='sm' className='w-full'>
               Add note
             </Button>
-            <ul className='space-y-3 border-t border-zinc-800 pt-3'>
-              {activities.length === 0 && <p className='text-xs text-zinc-500'>No activity yet.</p>}
+            <ul className='space-y-3 border-t border-border pt-3'>
+              {activities.length === 0 && (
+                <p className='text-xs text-muted-foreground'>No activity yet.</p>
+              )}
               {activities.map((a) => (
                 <li key={a.id} className='text-xs'>
-                  <div className='flex items-center gap-2 text-zinc-500'>
+                  <div className='flex items-center gap-2 text-muted-foreground'>
                     <span className='capitalize'>{a.type.replace('_', ' ')}</span>
                     <span>·</span>
                     <span>{new Date(a.createdAt).toLocaleString()}</span>
                   </div>
-                  <p className='mt-0.5 text-zinc-200'>{a.content}</p>
+                  <p className='mt-0.5 text-foreground'>{a.content}</p>
                 </li>
               ))}
             </ul>

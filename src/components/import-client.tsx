@@ -154,9 +154,15 @@ export function ImportClient({ pipelines }: { pipelines: { id: string; name: str
             />
           </div>
           <div className='flex items-center gap-2'>
-            <label className='inline-flex cursor-pointer items-center gap-2 rounded-md border border-zinc-800 bg-zinc-900/40 px-3 py-1.5 text-sm hover:bg-zinc-800'>
+            <label className='inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-muted/50 px-3 py-1.5 text-sm text-foreground hover:bg-muted'>
               <FileText className='h-4 w-4' /> Choose file
-              <input type='file' accept='.csv,text/csv' className='hidden' onChange={onFile} />
+              <input
+                type='file'
+                accept='.csv,text/csv'
+                aria-label='Choose CSV file'
+                className='hidden'
+                onChange={onFile}
+              />
             </label>
             <Button onClick={doImport} disabled={busy || !pipelineId}>
               {busy ? <Loader2 className='h-4 w-4 animate-spin' /> : <Upload className='h-4 w-4' />}
@@ -173,15 +179,15 @@ export function ImportClient({ pipelines }: { pipelines: { id: string; name: str
         <CardContent>
           {preview && preview.rows.length ? (
             <div className='space-y-2'>
-              <p className='text-xs text-zinc-500'>
+              <p className='text-xs text-muted-foreground'>
                 <Badge variant='outline' className='mr-2'>
                   {preview.rows.length} row(s)
                 </Badge>
                 {preview.headers.length} column(s)
               </p>
-              <div className='max-h-96 overflow-auto rounded border border-zinc-800'>
+              <div className='max-h-96 overflow-auto rounded-lg border border-border'>
                 <table className='w-full text-xs'>
-                  <thead className='sticky top-0 bg-zinc-900/80 text-left text-zinc-400'>
+                  <thead className='sticky top-0 bg-muted/80 text-left text-muted-foreground'>
                     <tr>
                       {preview.headers.map((h) => (
                         <th key={h} className='px-2 py-1.5 font-medium'>
@@ -190,11 +196,11 @@ export function ImportClient({ pipelines }: { pipelines: { id: string; name: str
                       ))}
                     </tr>
                   </thead>
-                  <tbody className='divide-y divide-zinc-800'>
+                  <tbody className='divide-y divide-border'>
                     {preview.rows.slice(0, 20).map((r, i) => (
                       <tr key={i}>
                         {preview.headers.map((h) => (
-                          <td key={h} className='px-2 py-1.5 text-zinc-300'>
+                          <td key={h} className='px-2 py-1.5 text-foreground'>
                             {r[h]}
                           </td>
                         ))}
@@ -205,7 +211,9 @@ export function ImportClient({ pipelines }: { pipelines: { id: string; name: str
               </div>
             </div>
           ) : (
-            <p className='text-sm text-zinc-500'>Paste CSV data or load a file to preview.</p>
+            <p className='text-sm text-muted-foreground'>
+              Paste CSV data or load a file to preview.
+            </p>
           )}
         </CardContent>
       </Card>

@@ -16,25 +16,29 @@ export function OverviewCards({
       label: 'Pipelines',
       value: totalPipelines,
       icon: Layers,
-      tint: 'from-orange-500/20 to-amber-500/10'
+      iconBg: 'bg-amber-50',
+      iconColor: 'text-amber-600'
     },
     {
       label: 'Total leads',
       value: totalLeads,
       icon: Users,
-      tint: 'from-blue-500/20 to-cyan-500/10'
+      iconBg: 'bg-blue-50',
+      iconColor: 'text-blue-600'
     },
     {
       label: 'Active statuses',
       value: activeStatuses,
       icon: Sparkles,
-      tint: 'from-violet-500/20 to-fuchsia-500/10'
+      iconBg: 'bg-violet-50',
+      iconColor: 'text-violet-600'
     },
     {
       label: 'Recent (top 8)',
       value: recentAdds,
       icon: TrendingUp,
-      tint: 'from-emerald-500/20 to-teal-500/10'
+      iconBg: 'bg-emerald-50',
+      iconColor: 'text-emerald-600'
     }
   ];
   return (
@@ -44,16 +48,13 @@ export function OverviewCards({
         return (
           <div
             key={c.label}
-            className='relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/40 p-4'
+            className='rounded-2xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md'
           >
-            <div className={`absolute inset-0 bg-gradient-to-br ${c.tint} opacity-50`} />
-            <div className='relative flex items-start justify-between'>
-              <div>
-                <p className='text-xs text-zinc-400'>{c.label}</p>
-                <p className='mt-1 text-2xl font-semibold tracking-tight'>{c.value}</p>
-              </div>
-              <Icon className='h-4 w-4 text-zinc-400' />
+            <div className={`grid h-9 w-9 place-items-center rounded-full ${c.iconBg}`}>
+              <Icon className={`h-4 w-4 ${c.iconColor}`} />
             </div>
+            <p className='mt-3 text-2xl font-semibold tracking-tight text-foreground'>{c.value}</p>
+            <p className='text-xs text-muted-foreground'>{c.label}</p>
           </div>
         );
       })}

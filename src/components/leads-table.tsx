@@ -82,8 +82,8 @@ export function LeadsTable({ leads, pipelineId }: { leads: Lead[]; pipelineId: s
 
   if (leads.length === 0) {
     return (
-      <div className='rounded-lg border border-dashed border-zinc-800 bg-zinc-900/30 p-12 text-center'>
-        <p className='text-sm text-zinc-400'>No leads match these filters yet.</p>
+      <div className='rounded-2xl border border-dashed border-border bg-muted/30 p-12 text-center'>
+        <p className='text-sm text-muted-foreground'>No leads match these filters yet.</p>
       </div>
     );
   }
@@ -91,8 +91,8 @@ export function LeadsTable({ leads, pipelineId }: { leads: Lead[]; pipelineId: s
   return (
     <div className='space-y-3'>
       {selected.size > 0 && (
-        <div className='flex items-center justify-between rounded-md border border-zinc-800 bg-zinc-900/40 px-4 py-2'>
-          <p className='text-sm'>
+        <div className='flex items-center justify-between rounded-xl border border-primary/20 bg-primary/5 px-4 py-2.5'>
+          <p className='text-sm text-foreground'>
             <span className='font-medium'>{selected.size}</span> selected
           </p>
           <div className='flex items-center gap-2'>
@@ -115,53 +115,53 @@ export function LeadsTable({ leads, pipelineId }: { leads: Lead[]; pipelineId: s
         </div>
       )}
 
-      <div className='overflow-x-auto rounded-lg border border-zinc-800'>
+      <div className='overflow-x-auto rounded-2xl border border-border bg-card shadow-sm'>
         <table className='w-full text-sm'>
-          <thead className='bg-zinc-900/50 text-left text-xs uppercase tracking-wider text-zinc-400'>
+          <thead className='bg-muted/50 text-left text-xs font-medium tracking-wider text-muted-foreground uppercase'>
             <tr>
-              <th className='w-10 px-3 py-2.5'>
+              <th className='w-10 px-4 py-3'>
                 <Checkbox
                   checked={selected.size === leads.length && leads.length > 0}
                   onCheckedChange={toggleAll}
                 />
               </th>
-              <th className='px-3 py-2.5'>Name</th>
-              <th className='px-3 py-2.5'>Phone</th>
-              <th className='px-3 py-2.5'>Locality</th>
-              <th className='px-3 py-2.5'>Source</th>
-              <th className='px-3 py-2.5'>Status</th>
-              <th className='px-3 py-2.5 text-right'>Open</th>
+              <th className='px-4 py-3'>Name</th>
+              <th className='px-4 py-3'>Phone</th>
+              <th className='px-4 py-3'>Locality</th>
+              <th className='px-4 py-3'>Source</th>
+              <th className='px-4 py-3'>Status</th>
+              <th className='px-4 py-3 text-right'>Open</th>
             </tr>
           </thead>
-          <tbody className='divide-y divide-zinc-800'>
+          <tbody className='divide-y divide-border'>
             {leads.map((l) => {
               const s = statusInfo(l.status);
               return (
-                <tr key={l.id} className='hover:bg-zinc-900/30'>
-                  <td className='px-3 py-2'>
+                <tr key={l.id} className='transition-colors hover:bg-muted/40'>
+                  <td className='px-4 py-3'>
                     <Checkbox checked={selected.has(l.id)} onCheckedChange={() => toggle(l.id)} />
                   </td>
-                  <td className='px-3 py-2 font-medium'>{l.name}</td>
-                  <td className='px-3 py-2 text-zinc-300'>
+                  <td className='px-4 py-3 font-medium text-foreground'>{l.name}</td>
+                  <td className='px-4 py-3 text-foreground'>
                     {l.phone ? (
                       <a href={`tel:${l.phone}`} className='hover:underline'>
                         {l.phone}
                       </a>
                     ) : (
-                      <span className='text-zinc-600'>—</span>
+                      <span className='text-muted-foreground'>—</span>
                     )}
                   </td>
-                  <td className='px-3 py-2 text-zinc-400'>{l.locality ?? '—'}</td>
-                  <td className='px-3 py-2 text-zinc-500'>{l.source ?? '—'}</td>
-                  <td className='px-3 py-2'>
+                  <td className='px-4 py-3 text-muted-foreground'>{l.locality ?? '—'}</td>
+                  <td className='px-4 py-3 text-muted-foreground'>{l.source ?? '—'}</td>
+                  <td className='px-4 py-3'>
                     <Badge variant='outline' className={s.color}>
                       {s.label}
                     </Badge>
                   </td>
-                  <td className='px-3 py-2 text-right'>
+                  <td className='px-4 py-3 text-right'>
                     <Link
                       href={`/dashboard/leads/${l.id}`}
-                      className='inline-flex items-center gap-1 text-zinc-400 hover:text-zinc-100'
+                      className='inline-flex items-center gap-1 text-muted-foreground hover:text-primary'
                     >
                       Open <ExternalLink className='h-3 w-3' />
                     </Link>

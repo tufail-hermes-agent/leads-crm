@@ -46,7 +46,7 @@ export function LeadFilters({
         className='flex items-center gap-2'
       >
         <div className='relative'>
-          <Search className='absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500' />
+          <Search className='absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground' />
           <Input
             value={q}
             onChange={(e) => setQ(e.target.value)}

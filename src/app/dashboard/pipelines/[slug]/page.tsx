@@ -55,21 +55,21 @@ export default async function PipelineDetailPage({
       <div className='space-y-6'>
         <div className='flex items-center justify-between'>
           <div>
-            <div className='flex items-center gap-2 text-xs text-zinc-500'>
-              <Link href='/dashboard/pipelines' className='hover:text-zinc-300'>
+            <div className='flex items-center gap-2 text-xs text-muted-foreground'>
+              <Link href='/dashboard/pipelines' className='hover:text-foreground'>
                 Pipelines
               </Link>
               <span>/</span>
               <span>{pipeline.name}</span>
             </div>
-            <h1 className='mt-1 flex items-center gap-2 text-2xl font-semibold tracking-tight'>
-              <Users className='h-5 w-5' />
+            <h1 className='mt-1 flex items-center gap-2 text-2xl font-semibold tracking-tight text-foreground'>
+              <Users className='h-5 w-5 text-primary' />
               {pipeline.name}
             </h1>
             {pipeline.description && (
-              <p className='text-sm text-zinc-400'>{pipeline.description}</p>
+              <p className='text-sm text-muted-foreground'>{pipeline.description}</p>
             )}
-            <p className='mt-1 text-xs text-zinc-500'>
+            <p className='mt-1 text-xs text-muted-foreground'>
               {leads.length} lead{leads.length === 1 ? '' : 's'} shown ·{' '}
               {statusCounts.reduce((a, s) => a + s._count._all, 0)} total
             </p>

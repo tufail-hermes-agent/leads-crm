@@ -35,7 +35,7 @@ export function LoginForm({ next, initialError }: { next: string; initialError?:
   return (
     <form
       onSubmit={onSubmit}
-      className='space-y-4 rounded-lg border border-zinc-800 bg-zinc-900/50 p-6'
+      className='space-y-4 rounded-2xl border border-border bg-card p-6 shadow-sm'
     >
       <div className='space-y-2'>
         <Label htmlFor='password'>Password</Label>
@@ -51,7 +51,7 @@ export function LoginForm({ next, initialError }: { next: string; initialError?:
         />
       </div>
       {error && (
-        <div className='rounded-md border border-rose-500/20 bg-rose-500/10 px-3 py-2 text-sm text-rose-300'>
+        <div className='rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700'>
           {error}
         </div>
       )}

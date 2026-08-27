@@ -16,8 +16,8 @@ export default async function ImportPage() {
     <DashboardShell user={null}>
       <div className='space-y-6'>
         <div>
-          <h1 className='text-2xl font-semibold tracking-tight'>Import leads</h1>
-          <p className='text-sm text-zinc-400'>
+          <h1 className='text-2xl font-semibold tracking-tight text-foreground'>Import leads</h1>
+          <p className='text-sm text-muted-foreground'>
             Paste CSV data (or copy from a spreadsheet) to bulk-add leads into a pipeline.
           </p>
         </div>

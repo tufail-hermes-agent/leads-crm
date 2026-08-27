@@ -24,7 +24,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
         <div>
           <Link
             href={`/dashboard/pipelines/${lead.pipeline.slug}`}
-            className='inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-300'
+            className='inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary'
           >
             <ArrowLeft className='h-3 w-3' /> Back to {lead.pipeline.name}
           </Link>
