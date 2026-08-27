@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { getAdmin } from '@/lib/auth';
+import { getAdmin } from '@/lib/auth-server';
 import { prisma } from '@/lib/prisma';
 import { DashboardShell } from '@/components/dashboard-shell';
 import { ImportClient } from '@/components/import-client';

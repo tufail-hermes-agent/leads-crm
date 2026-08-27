@@ -1,7 +1,7 @@
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { getAdmin } from '@/lib/auth';
+import { getAdmin } from '@/lib/auth-server';
 import { prisma } from '@/lib/prisma';
 import { DashboardShell } from '@/components/dashboard-shell';
 import { LeadDetailClient } from '@/components/lead-detail-client';

@@ -1,6 +1,6 @@
 import { LoginForm } from '@/components/login-form';
 import { redirect } from 'next/navigation';
-import { getAdmin } from '@/lib/auth';
+import { getAdmin } from '@/lib/auth-server';
 
 export const metadata = { title: 'Sign in — Protech Leads CRM' };
 

@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { getAdmin } from '@/lib/auth';
+import { getAdmin } from '@/lib/auth-server';
 import { DashboardShell } from '@/components/dashboard-shell';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 

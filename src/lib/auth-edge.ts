@@ -9,7 +9,7 @@ export function checkPassword(input: string): boolean {
   return input === getAdminPassword();
 }
 
-// Generate a URL-safe random token using Web Crypto (Edge-safe).
+// Generate a hex random token using Web Crypto (Edge-safe).
 export function generateSessionToken(): string {
   const bytes = new Uint8Array(32);
   crypto.getRandomValues(bytes);
